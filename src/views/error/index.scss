@@ -1,0 +1,20 @@
+.route-error {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  background: var(--np-bg-page);
+
+  .ant-result-icon {
+    font-size: 48px;
+  }
+
+  .ant-result-icon > .anticon {
+    font-size: inherit;
+  }
+
+  h1 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+  }
+}

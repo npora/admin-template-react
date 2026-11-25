@@ -1,0 +1,107 @@
+.profile-page .management__heading {
+  padding-top: 0;
+
+  p { color: var(--np-text-secondary); }
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
+}
+
+.profile-summary,
+.profile-content {
+  border-radius: 14px;
+  border-color: var(--np-border-color-light);
+  box-shadow: var(--np-shadow-light);
+}
+
+.profile-summary {
+  text-align: center;
+
+  h2 {
+    margin: 16px 0 6px;
+    font-size: 20px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+  }
+
+  p {
+    color: var(--np-text-secondary);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .ant-avatar {
+    background: var(--np-primary-soft);
+    color: var(--np-color-primary);
+
+    .anticon { font-size: 18px; }
+  }
+
+  dl {
+    margin: 25px 0 20px;
+    border-top: 1px solid var(--np-border-color-light);
+    text-align: start;
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 15px;
+      font-size: 12px;
+    }
+  }
+
+  dt { color: var(--np-text-secondary); }
+  dd { margin: 0; overflow-wrap: anywhere; text-align: end; }
+  &__note { font-size: 11px !important; }
+  &__roles { margin-top: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+}
+
+.profile-content {
+  min-width: 0;
+
+  .ant-tabs-tab { font-size: 13px; }
+  .ant-tabs-nav { margin-bottom: 8px; }
+  .ant-tabs-tab + .ant-tabs-tab { margin-inline-start: 40px; }
+  .ant-form-item { margin-bottom: 18px; }
+  .ant-form-item-label > label { color: var(--np-text-regular); }
+
+  .ant-input-textarea-show-count::after {
+    position: absolute;
+    inset-inline-end: 10px;
+    inset-block-end: 4px;
+    color: var(--np-text-secondary);
+  }
+
+  textarea { padding-bottom: 18px; }
+}
+
+.profile-notice {
+  margin: 8px 0 24px;
+  background: var(--np-fill-color-light);
+  border: 0;
+  min-height: 40px;
+  color: var(--np-text-secondary);
+  font-size: 13px;
+
+  .ant-alert-icon { color: inherit; }
+}
+
+.profile-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 1000px) {
+  .profile-grid { grid-template-columns: minmax(0, 1fr); }
+  .profile-summary dl { max-width: 400px; margin-inline: auto; }
+}
+
+@media (max-width: 520px) {
+  .profile-fields { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}

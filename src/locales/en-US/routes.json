@@ -1,0 +1,18 @@
+{
+  "Login": "Sign in",
+  "ForgotPassword": "Forgot password",
+  "Dashboard": "Dashboard",
+  "System": "System management",
+  "SystemUser": "Users",
+  "SystemRole": "Roles",
+  "SystemAuditLog": "Audit log",
+  "SystemMenu": "Menus",
+  "SystemDepartment": "Departments",
+  "Examples": "Examples",
+  "SystemTable": "Table example",
+  "SystemDownload": "Downloads",
+  "ExampleCache": "Page cache",
+  "ExampleForm": "Form example",
+  "Profile": "Profile",
+  "SystemDict": "Dictionaries"
+}

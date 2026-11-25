@@ -1,0 +1,7 @@
+.audit-time-range {
+  display: grid;
+  gap: 8px;
+  width: min(100%, 380px);
+
+  .ant-picker { min-width: 0; width: 100%; }
+}

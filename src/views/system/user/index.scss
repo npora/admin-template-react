@@ -1,0 +1,108 @@
+.user-management {
+  max-width: 1680px;
+  margin: 0 auto;
+
+  &__heading,
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__heading {
+    margin-bottom: 24px;
+
+    small {
+      color: var(--np-text-regular);
+      letter-spacing: 1.5px;
+    }
+
+    h1 {
+      margin: 5px 0 0;
+      font-size: 24px;
+      font-weight: 650;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 8px 0 0;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+  }
+
+  &__filters,
+  &__table {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--np-bg-container);
+    box-shadow: 0 4px 18px rgb(32 48 71 / 3%);
+  }
+
+  &__filters {
+    display: grid;
+    grid-template-columns: minmax(190px, 1.6fr) repeat(3, minmax(120px, 1fr)) auto;
+    gap: 14px 18px;
+    align-items: end;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+
+    .ant-form-item {
+      margin-bottom: 0;
+      min-width: 0;
+    }
+  }
+
+  &__table {
+    padding: 22px 24px;
+  }
+
+  &__toolbar {
+    margin-bottom: 20px;
+
+    h2 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+  }
+
+  &__table .ant-table-thead > tr > th {
+    background: var(--np-bg-subtle);
+    color: var(--np-text-regular);
+    font-weight: 500;
+  }
+
+  &__table .ant-table-pagination {
+    border-top: 1px solid #ebeff5;
+    padding-top: 16px;
+  }
+
+  &__table small {
+    display: block;
+    color: var(--np-text-regular);
+  }
+
+  &__identity .ant-avatar {
+    background: #ecf5ff;
+    color: var(--accent);
+  }
+
+  @media (max-width: 1040px) {
+    &__filters {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    &__filters {
+      grid-template-columns: 1fr;
+    }
+
+    &__filters,
+    &__table {
+      padding: 16px;
+    }
+  }
+}

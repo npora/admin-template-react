@@ -1,0 +1,159 @@
+@use 'sass:list';
+
+:root {
+  --np-color-primary: #4361ee;
+  --np-color-success: #249d7c;
+  --np-color-warning: #d8952f;
+  --np-color-danger: #e25d6a;
+  --np-color-info: #8793a8;
+  --np-primary-soft: #eef2ff;
+  --np-primary-border: #dce4ff;
+  --np-bg-page: #f5f7fb;
+  --np-bg-container: #ffffff;
+  --np-bg-overlay: #ffffff;
+  --np-bg-subtle: #f8fafd;
+  --np-text-primary: #24324b;
+  --np-text-regular: #5d6b82;
+  --np-text-secondary: #8b97aa;
+  --np-text-placeholder: #a4afbf;
+  --np-text-disabled: #bcc5d2;
+  --np-border-color: #dfe5ee;
+  --np-border-color-light: #e9edf4;
+  --np-border-color-lighter: #eef1f6;
+  --np-border-color-extra-light: #f3f5f9;
+  --np-fill-color: #edf1f7;
+  --np-fill-color-light: #f4f6fa;
+  --np-fill-color-lighter: #f8fafd;
+  --np-fill-color-extra-light: #fafbfe;
+  --np-radius-small: 6px;
+  --np-radius-base: 8px;
+  --np-radius-medium: 14px;
+  --np-radius-large: 18px;
+  --np-radius-round: 9999px;
+  --np-shadow-light: 0 3px 16px rgb(30 49 87 / 3%);
+  --np-shadow-base: 0 8px 28px rgb(30 49 87 / 6%);
+  --np-shadow-large: 0 16px 48px rgb(30 49 87 / 12%);
+  --np-hero-background: linear-gradient(115deg, #edf2ff 0%, #f4f6ff 50%, #eef7fb 100%);
+  --np-hero-border: #e2e9fc;
+  --np-tone-blue: #5476ee;
+  --np-tone-blue-bg: #eef2ff;
+  --np-tone-purple: #9671df;
+  --np-tone-purple-bg: #f4effd;
+  --np-tone-teal: #37a69a;
+  --np-tone-teal-bg: #eaf8f4;
+  --np-tone-amber: #d4a34e;
+  --np-tone-amber-bg: #fff6e8;
+  --np-font-size-extra-small: 12px;
+  --np-font-size-small: 13px;
+  --np-font-size-base: 14px;
+  --np-font-size-medium: 16px;
+  --np-font-size-large: 18px;
+  --np-font-size-extra-large: 20px;
+  --np-transition-duration-fast: 0.15s;
+  --np-transition-duration: 0.2s;
+  --np-transition-duration-slow: 0.3s;
+  --np-z-index-base: 1;
+  --np-z-index-header: 100;
+  --np-z-index-sidebar: 200;
+  --np-z-index-mask: 1000;
+  --np-scrollbar-thumb: rgb(80 97 126 / 16%);
+  --np-scrollbar-thumb-hover: rgb(80 97 126 / 28%);
+  --np-scrollbar-thumb-active: rgb(80 97 126 / 38%);
+  --np-header-height: 68px;
+  --np-sidebar-width: 244px;
+  --np-sidebar-collapsed-width: 76px;
+}
+
+html.dark {
+  --np-color-primary: #8ba1ff;
+  --np-color-success: #60c2a1;
+  --np-color-warning: #e9b560;
+  --np-color-danger: #f18a96;
+  --np-primary-soft: #25304e;
+  --np-primary-border: #3c4d7c;
+  --np-bg-page: #101725;
+  --np-bg-container: #182233;
+  --np-bg-overlay: #1c293d;
+  --np-bg-subtle: #1b273a;
+  --np-text-primary: #e4ebf7;
+  --np-text-regular: #b3bfd2;
+  --np-text-secondary: #8392ac;
+  --np-text-placeholder: #77869e;
+  --np-text-disabled: #56647a;
+  --np-border-color: #354156;
+  --np-border-color-light: #2a374b;
+  --np-border-color-lighter: #253246;
+  --np-border-color-extra-light: #202e42;
+  --np-fill-color: #29384f;
+  --np-fill-color-light: #213047;
+  --np-fill-color-lighter: #1d2a3e;
+  --np-fill-color-extra-light: #1a273a;
+  --np-shadow-light: 0 3px 16px rgb(0 0 0 / 8%);
+  --np-shadow-base: 0 8px 28px rgb(0 0 0 / 14%);
+  --np-shadow-large: 0 16px 48px rgb(0 0 0 / 24%);
+  --np-hero-background: linear-gradient(115deg, #222f4a 0%, #1e2941 55%, #1e3542 100%);
+  --np-hero-border: #30415e;
+  --np-tone-blue: #92aaff;
+  --np-tone-blue-bg: #273856;
+  --np-tone-purple: #c0a0f0;
+  --np-tone-purple-bg: #362e4c;
+  --np-tone-teal: #70cbb9;
+  --np-tone-teal-bg: #233f40;
+  --np-tone-amber: #e6bd78;
+  --np-tone-amber-bg: #413c30;
+  --np-scrollbar-thumb: rgb(170 185 212 / 18%);
+  --np-scrollbar-thumb-hover: rgb(170 185 212 / 30%);
+  --np-scrollbar-thumb-active: rgb(170 185 212 / 40%);
+}
+
+$theme-accents: (
+  'blue': (
+    #1462b6,
+    #8cc1ff
+  ),
+  'teal': (
+    #087c71,
+    #62cbbb
+  ),
+  'emerald': (
+    #337535,
+    #8bce88
+  ),
+  'violet': (
+    #6d45c2,
+    #b69af8
+  ),
+  'rose': (
+    #b23a66,
+    #ff98b7
+  ),
+  'amber': (
+    #916008,
+    #efbf63
+  ),
+  'orange': (
+    #af4920,
+    #ffa474
+  )
+);
+
+@each $accent, $colors in $theme-accents {
+  html[data-np-accent='#{$accent}'] {
+    --np-color-primary: #{list.nth($colors, 1)};
+    --np-primary-soft: color-mix(in srgb, var(--np-color-primary) 10%, var(--np-bg-container));
+    --np-primary-border: color-mix(in srgb, var(--np-color-primary) 25%, var(--np-bg-container));
+  }
+
+  html.dark[data-np-accent='#{$accent}'] {
+    --np-color-primary: #{list.nth($colors, 2)};
+  }
+}
+
+// 应用到根元素，保持弹窗等固定定位元素的视口定位。
+html.np-grayscale {
+  filter: grayscale(1);
+}
+
+html.np-color-vision:not(.np-grayscale) {
+  filter: saturate(0.82) contrast(1.12);
+}
