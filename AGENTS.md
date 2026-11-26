@@ -5,7 +5,7 @@
 - 初始化采用 npm 稳定版 React，依赖调整同时更新 package.json 与 package-lock.json。模板版本号与 Vue 模板和生成器同步；三者在同一轮功能变更中协作并使用相同版本号与 Git 标签。本仓库是公开 GitHub 源码仓库，发布 GitHub Release，不单独发布 npm 包。涉及功能、页面、配置或生成行为时，同步检查 Vue、生成器和 online-npora 对应展示入口。
 - 与 Vue 模板共用后端 API、权限码和动态菜单组件标识。组件标识通过本地白名单映射到 React 页面，后端独立鉴权。
 - 自绘 SVG 放在 src/icons。环境配置使用 .env、.env.development 和 .env.production。本地自定义可通过进程环境传入。
-- 提交前执行 `npm run check:all`。涉及登录、路由、权限、偏好或日期控件时，使用隔离数据执行浏览器流程，并与 Vue 在同一视口对照。
+- GitHub Actions 在 main 和 PR 上执行 `npm run check:all`；发布 `vX.Y.Z` 标签时校验标签与 package.json 版本一致并创建 GitHub Release，不发布 npm。提交前执行 `npm run check:all`。涉及登录、路由、权限、偏好或日期控件时，使用隔离数据执行浏览器流程，并与 Vue 在同一视口对照。
 - `@npora/create-admin` 已支持交互选择 Vue 或 React，也可通过 `--framework react` 选择 React；两种框架均生成纯净版。
 
 ## 公开演示联动
