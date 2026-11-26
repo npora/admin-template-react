@@ -1,16 +1,16 @@
 import { getMenuIcon } from '../icons/menu'
 import {
-  CloseOutlined, MoreOutlined, ApartmentOutlined, AuditOutlined, BookOutlined, DownOutlined, EditOutlined, FileTextOutlined,
+  CloseOutlined, MoreOutlined, ApartmentOutlined, AuditOutlined, BookOutlined, DownOutlined, FileTextOutlined,
   FolderOpenOutlined, FullscreenExitOutlined, FullscreenOutlined, HomeOutlined, LockOutlined,
   MenuFoldOutlined, MenuUnfoldOutlined, MoonOutlined, SearchOutlined, SettingOutlined, SunOutlined,
   UserOutlined
 } from '@ant-design/icons'
-import { AutoComplete, Avatar, Breadcrumb, Button, Dropdown, Input, Modal, Tag, Watermark } from 'antd'
+import { AutoComplete, Avatar, Breadcrumb, Button, Dropdown, Input, Modal, Watermark } from 'antd'
 import { Activity, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
 import { useTranslation } from 'react-i18next'
-import { appTitle, demoEnabled } from '../config/app'
+import { appTitle } from '../config/app'
 import Brand from '../components/Brand'
 import LanguageSwitch from '../components/LanguageSwitch'
 import { menuAddress } from '../router/menu'
@@ -41,8 +41,7 @@ const icons = {
   'system/role/index': LockOutlined,
   'system/menu/index': SettingOutlined,
   'system/dict/index': BookOutlined,
-  'system/audit-log/index': AuditOutlined,
-  'examples/form/index': EditOutlined
+  'system/audit-log/index': AuditOutlined
 }
 
 export default function Layout({
@@ -95,9 +94,6 @@ export default function Layout({
   }
   const entries = [...menuGroups].flatMap(([name, pages]) => name ? [{ name, pages }] :
     pages.map((page) => ({ name: '', pages: [page] })))
-  const formIndex = entries.findIndex(({ pages, name }) => !name && pages[0].component === 'examples/form/index')
-  const examplesIndex = entries.findIndex(({ pages, name }) => name && pages[0].component.startsWith('examples/'))
-  if (formIndex > examplesIndex && examplesIndex >= 0) entries.splice(examplesIndex, 0, ...entries.splice(formIndex, 1))
   const activeGroup = entries.find(({ pages }) => pages.some((page) => page.path === current?.path))
   const showSidebar = mode === 'sidebar' || (mode === 'mixed' && Boolean(activeGroup?.name))
   const desktopCollapsed = !mobile && sidebarCollapsed
@@ -144,7 +140,7 @@ export default function Layout({
       .map(page=>visited[page.path] ?? menuAddress(page)).at(-1) ?? '/dashboard', { replace:true })
   }
   const retained = visiblePages.filter(page=>page.path !== path && page.path in visited &&
-    (page.keepAlive ?? page.component === 'examples/cache/index')).map(page=>page.path)
+    page.keepAlive).map(page=>page.path)
 
   return (
     <div className={`shell shell--${mode}${showSidebar ? ' shell--with-sidebar' : ''}${desktopCollapsed ? ' shell--collapsed' : ''}${mobileOpen ? ' shell--mobile-open' : ''}`}>
@@ -193,7 +189,6 @@ export default function Layout({
           <div className="workspace__actions">
             <Button type="text" shape="circle" icon={<SearchOutlined />} aria-label={t('menuSearch')} onClick={() => setSearchOpen(true)} />
             <LanguageSwitch compact />
-            {demoEnabled && !mobile && <Tag className="workspace__demo">{t('demoWorkspace')}</Tag>}
             <Button type="text" shape="circle" icon={dark ? <SunOutlined /> : <MoonOutlined />}
               aria-label={t(dark ? 'switchToLightMode' : 'switchToDarkMode')} onClick={() => update({mode:dark?'light':'dark'})} />
             {document.fullscreenEnabled && <Button type="text" shape="circle" icon={fullscreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}

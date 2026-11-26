@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Link } from 'react-router'
-import { Alert, Button, Checkbox, Form, Input, Tag } from 'antd'
+import { Alert, Button, Checkbox, Form, Input } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { api, ApiError } from '../../api/client'
 import type { Session } from '../../auth/types'
 import type { Credential } from '../../auth/credential'
-import { appTitle, authenticatorEnabled, demoEnabled, tokenStorageMode } from '../../config/app'
+import { appTitle, authenticatorEnabled, tokenStorageMode } from '../../config/app'
 import Brand from '../../components/Brand'
 import LanguageSwitch from '../../components/LanguageSwitch'
 
@@ -133,7 +133,6 @@ export default function Login({
             aria-describedby={seconds > 0 ? 'sign-in-retry' : undefined}>
             {t('signIn')}
           </Button>
-          {demoEnabled && <div className="login__demo"><Tag color="blue">Demo</Tag>{t('demoCredentialsHint')}</div>}
         </Form>
       </div>
     </main>

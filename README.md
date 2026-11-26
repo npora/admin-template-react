@@ -1,6 +1,14 @@
 # Npora Admin · React
 
-基于 React、TypeScript 、Vite 和 Ant Design 的后台模板，请求使用 `@npora/request`。当前版本提供登录、TOTP 验证与找回密码、首页、动态导航与菜单搜索、用户列表、操作审计、退出登录和会话恢复。
+基于 React、TypeScript、Vite 和 Ant Design 的后台模板，请求使用 `@npora/request`。提供登录和会话、动态导航与菜单搜索、工作台、系统管理、个人中心和界面偏好。
+
+React 与 Vue 模板目前覆盖相同的页面和功能。两者使用不同的前端技术栈，个别控件和交互细节采用各自组件库实现。当前模板版本与 Vue 模板、生成器统一为 1.0.26；本仓库是公开 GitHub 源码仓库，不单独发布 npm 包。
+
+[![React 操作演示 GIF：从登录进入工作台，再打开用户管理](docs/showcase/overview.gif)](https://react.npora.live/)
+
+[Npora 官网](https://www.npora.live/) · [React 在线演示](https://react.npora.live/) · [Vue 在线演示](https://admin.npora.live/) · [生成器](https://github.com/npora/create-admin)
+
+GIF 使用隔离示例数据。React 线上演示使用独立的只读数据。演示账号和密码见登录页，登录与退出仍可正常体验。公开演示通过 [Npora Online](https://github.com/npora/online/tree/main/react) 构建和部署。
 
 ## 开始使用
 
@@ -11,7 +19,7 @@ npm ci
 npm run dev
 ```
 
-开发服务器默认监听 `http://localhost:9000`，并将同源 `/api` 转发到 `.env.development` 中的后端。可以通过进程环境中的 `VITE_API_URL` 指向本地 Worker。生产部署需要在同一域名下转发 `/api` 并将前端路由回退到 `index.html`。
+开发服务器默认监听 `http://localhost:9000`，并将同源 `/api` 转发到 `.env.development` 中的后端。模板默认连接 `http://localhost:8080`，可修改 `.env.development` 中的 `VITE_API_URL` 接入其他后端。生产部署需要在同一域名下转发 `/api` 并将前端路由回退到 `index.html`。
 
 页面以 Vue 的 `starter` 预设为参考。找回密码需要账号已绑定验证器。可通过 `VITE_PASSWORD_RESET_CONTACT` 显示管理员联系方式。
 
@@ -20,6 +28,10 @@ React 与 [Vue 模板](https://github.com/npora/admin-template) 共用后端接�
 ```sh
 npm run check:all
 ```
+
+正式权限及字典模型见 [数据库初始化](database/README.md)和 [SQL 在线指南](https://react.npora.live/database/)，共享后端协议见 [接口契约](https://github.com/npora/admin-template/blob/main/docs/api.md)。模板只交付 React 前端、MySQL 初始化与迁移脚本及开发文档；在线演示、演示 API、隔离数据和 Cloudflare 部署由 [Npora Online](https://github.com/npora/online/tree/main/react) 管理。
+
+可使用 [生成器](https://github.com/npora/create-admin)交互选择 Vue 或 React，或用 `--framework react` 直接创建 React 纯净项目。两种框架都由生成器支持。
 
 ## 源码目录
 
@@ -30,12 +42,12 @@ npm run check:all
 
 ## 环境配置
 
-完整版默认启用工作台。设置 `VITE_DEMO_ENABLED=false` 可切换到基础首页。工作台统计读取后端的 `GET /system/dashboard`。
-
 - `VITE_API_PREFIX` 配置前端请求和开发代理共同使用的同源前缀，默认 `/api`。
 - `VITE_TOKEN_STORAGE` 支持 `session`、`local` 和 `memory`。
 - `VITE_AUTHENTICATOR_ENABLED` 控制验证器输入和状态的默认展示。
 - `VITE_PASSWORD_RESET_CONTACT` 配置找回密码页的联系提示。
+
+以下国际化变量可按项目需要显式覆盖。默认配置由应用提供。
 
 - `VITE_I18N_ENABLED` 控制切换入口。关闭后固定使用默认语言。
 - `VITE_I18N_DEFAULT_LOCALE` 和 `VITE_I18N_FALLBACK_LOCALE` 支持 `zh-CN`、`en-US`。

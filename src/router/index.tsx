@@ -1,5 +1,4 @@
 import { clearScreenLock } from '../layout/screen-lock'
-import { demoEnabled } from '../config/app'
 import { finishStartup } from '../startup'
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router'
@@ -16,9 +15,7 @@ import Login from '../views/login'
 import { collectPages } from './menu'
 import { getSystemPage, systemPages } from './system-pages'
 
-const DemoDashboard = lazy(() => import('../views/dashboard/demo'))
 const Profile = lazy(() => import('../views/profile'))
-const FormExample = lazy(() => import('../views/examples/form'))
 const PasswordRecovery = lazy(() => import('../views/forgot-password'))
 
 export default function AppRouter() {
@@ -143,9 +140,6 @@ export default function AppRouter() {
       ? t(`routes:${node.name}`, { defaultValue: node.title })
       : node.title
   )
-  if (demoEnabled && !menus.some((page) => page.path === '/examples/form')) {
-    menus.push({ path: '/examples/form', title: t('routes:ExampleForm'), component: 'examples/form/index', hidden: false, keepAlive: true })
-  }
   const pages = menus.flatMap((menu) => {
     const definition = getSystemPage(menu.component)
     return definition ? [{ ...menu, definition }] : []
@@ -155,7 +149,6 @@ export default function AppRouter() {
   )
   const current = pages.find((page) => page.path === location.pathname)
   const CurrentPage = location.pathname === '/profile' ? Profile
-    : demoEnabled && location.pathname === '/examples/form' ? FormExample
     : current && (!current.definition.permission || can(session.user, current.definition.permission))
       ? current.definition.page
       : undefined
@@ -171,9 +164,7 @@ export default function AppRouter() {
   const token = credential.token
   const account = session.user
   function renderPage(path: string) {
-    if (path === '/dashboard') return demoEnabled
-      ? <DemoDashboard displayName={displayName} pages={visiblePages} token={token} onExpired={expire} />
-      : <Dashboard displayName={displayName} pages={visiblePages} />
+    if (path === '/dashboard') return <Dashboard displayName={displayName} pages={visiblePages} />
     if (path === '/profile') return <Profile token={token} user={account} onExpired={expire} />
     const available = pages.find((page) => page.path === path && (!page.definition.permission || can(account, page.definition.permission)))
     const Page = available?.definition.page

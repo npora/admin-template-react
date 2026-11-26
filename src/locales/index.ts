@@ -3,10 +3,6 @@ import zhLanguage from './zh-CN/language.json'
 import enTimezone from './en-US/timezone.json'
 import zhTimezone from './zh-CN/timezone.json'
 import { i18nConfig } from '../config/i18n'
-import enTable from './en-US/table.json'
-import zhTable from './zh-CN/table.json'
-import enForm from './en-US/form.json'
-import zhForm from './zh-CN/form.json'
 import enProfile from './en-US/profile.json'
 import zhProfile from './zh-CN/profile.json'
 import enDict from './en-US/dict.json'
@@ -38,10 +34,10 @@ export const i18nReady = i18next
     fallbackLng: i18nConfig.fallbackLocale,
     lng: !i18nConfig.enabled || (!i18nConfig.detectBrowserLanguage && !savedLocale()) ? i18nConfig.defaultLocale : undefined,
     defaultNS: 'ui',
-    ns: ['ui', 'routes', 'dict', 'profile', 'form', 'table', 'timezone', 'language', 'auditLog'],
+    ns: ['ui', 'routes', 'dict', 'profile', 'timezone', 'language', 'auditLog'],
     resources: {
-      'zh-CN': { ui: zhUi, routes: zhRoutes, auditLog: zhAuditLog, language: zhLanguage, timezone: zhTimezone, table: zhTable, form: zhForm, profile: zhProfile, dict: zhDict },
-      'en-US': { ui: enUi, routes: enRoutes, auditLog: enAuditLog, language: enLanguage, timezone: enTimezone, table: enTable, form: enForm, profile: enProfile, dict: enDict }
+      'zh-CN': { ui: zhUi, routes: zhRoutes, auditLog: zhAuditLog, language: zhLanguage, timezone: zhTimezone, profile: zhProfile, dict: zhDict },
+      'en-US': { ui: enUi, routes: enRoutes, auditLog: enAuditLog, language: enLanguage, timezone: enTimezone, profile: enProfile, dict: enDict }
     },
     detection: {
       order: i18nConfig.detectBrowserLanguage ? ['localStorage', 'navigator'] : ['localStorage'],
