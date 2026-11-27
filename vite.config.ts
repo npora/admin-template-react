@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => {
       include: ['react', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'react-dom', 'react-dom/client']
     },
     server: {
+      host: '0.0.0.0',
       port: 9000,
       strictPort: true,
       proxy: {
